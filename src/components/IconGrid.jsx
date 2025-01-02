@@ -7,15 +7,15 @@ function IconGrid() {
   const [selectedIconId, setSelectedIconId] = useState(null);
 
   const iconsData = [
-    { id: 1, title: 'Hive 1', leftValue: 20, rightValue: 80 },
-    { id: 2, title: 'Hive 2', leftValue: 50, rightValue: 50 },
-    { id: 3, title: 'Hive 3', leftValue: 70, rightValue: 30 },
-    { id: 4, title: 'Hive 4', leftValue: 60, rightValue: 40 },
-    { id: 5, title: 'Hive 5', leftValue: 80, rightValue: 20 },
-    { id: 6, title: 'Hive 6', leftValue: 30, rightValue: 70 },
-    { id: 7, title: 'Hive 7', leftValue: 40, rightValue: 60 },
-    { id: 8, title: 'Hive 8', leftValue: 90, rightValue: 10 },
-    { id: 9, title: 'Hive 9', leftValue: 55, rightValue: 45 },
+    { id: 1, title: 'Temperature :', leftValue: 20, rightValue: 80 },
+    { id: 2, title: 'Humidity :', leftValue: 50, rightValue: 50 },
+    { id: 3, title: 'weight :', leftValue: 70, rightValue: 30 },
+    { id: 4, title: 'Swarming :', leftValue: 60, rightValue: 40 },
+    { id: 5, title: 'Brood :', leftValue: 80, rightValue: 20 },
+    { id: 6, title: 'Ventilation :', leftValue: 30, rightValue: 70 },
+    { id: 7, title: 'vibrations :', leftValue: 40, rightValue: 60 },
+    { id: 8, title: 'Foraging Resources :', leftValue: 90, rightValue: 10 },
+    { id: 9, title: 'Honey Production :', leftValue: 55, rightValue: 45 },
   ];
 
   const handleIconClick = (id) => {

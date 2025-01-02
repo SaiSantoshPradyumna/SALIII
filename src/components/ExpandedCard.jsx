@@ -1,6 +1,6 @@
 // src/components/ExpandedCard.jsx
 import React from 'react';
-import { Dialog, DialogTitle, IconButton } from '@mui/material';
+import { Dialog, DialogTitle, IconButton, Box } from '@mui/material';
 import { Close } from '@mui/icons-material';
 import {
   LineChart,
@@ -29,7 +29,7 @@ function ExpandedCard({ data, onClose }) {
   ];
 
   return (
-    <Dialog open onClose={onClose} fullWidth maxWidth="md">
+    <Dialog open onClose={onClose} fullWidth maxWidth="lg">
       <DialogTitle>
         {data.title}
         <IconButton
@@ -44,15 +44,32 @@ function ExpandedCard({ data, onClose }) {
           <Close />
         </IconButton>
       </DialogTitle>
-      <ResponsiveContainer width="100%" height={400}>
-        <LineChart data={sampleData}>
-          <XAxis dataKey="time" />
-          <YAxis />
-          <CartesianGrid stroke="#ccc" />
-          <Tooltip />
-          <Line type="monotone" dataKey="value" stroke="#ff7300" />
-        </LineChart>
-      </ResponsiveContainer>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          height: 500, // Adjust as per your requirement
+          padding: 2,
+        }}
+      >
+        <Box
+          sx={{
+            width: '80%', // Box width for the graph
+            height: '100%', // Full height of the container
+          }}
+        >
+          <ResponsiveContainer width="100%" height="90%">
+            <LineChart data={sampleData}>
+              <XAxis dataKey="time" />
+              <YAxis />
+              <CartesianGrid stroke="#ccc" />
+              <Tooltip />
+              <Line type="monotone" dataKey="value" stroke="#ff7300" />
+            </LineChart>
+          </ResponsiveContainer>
+        </Box>
+      </Box>
     </Dialog>
   );
 }

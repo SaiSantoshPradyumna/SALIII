@@ -1,4 +1,3 @@
-// src/components/IconCard.jsx
 import React from 'react';
 import { Card, Typography, Box } from '@mui/material';
 import {
@@ -14,7 +13,6 @@ import {
 function IconCard({ data, isSelected, onClick }) {
   const { title, leftValue, rightValue } = data;
 
-  // Sample data for the graph
   const sampleData = [
     { time: 'Jan', value: Math.random() * 100 },
     { time: 'Feb', value: Math.random() * 100 },
@@ -33,79 +31,95 @@ function IconCard({ data, isSelected, onClick }) {
   return (
     <Card
       variant="outlined"
-      sx={{ cursor: 'pointer' }}
+      sx={{ cursor: 'pointer', display: 'flex', alignItems: 'center', p: 2 }}
       onClick={() => onClick(data.id)}
     >
       {isSelected ? (
-        // Render the expanded graph
-        <Box sx={{ p: 2 }}>
+        <Box sx={{ width: '100%', height: 300 }}>
           <Typography variant="h6" gutterBottom>
             {title}
           </Typography>
-          <Box sx={{ height: 200 }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={sampleData}>
-                <XAxis dataKey="time" />
-                <YAxis />
-                <CartesianGrid stroke="#ccc" />
-                <Tooltip />
-                <Line type="monotone" dataKey="value" stroke="#ff7300" />
-              </LineChart>
-            </ResponsiveContainer>
-          </Box>
+          <ResponsiveContainer width="100%" height="95%">
+            <LineChart data={sampleData}>
+              <XAxis dataKey="time" />
+              <YAxis />
+              <CartesianGrid stroke="#ccc" />
+              <Tooltip />
+              <Line type="monotone" dataKey="value" stroke="#ff7300" />
+            </LineChart>
+          </ResponsiveContainer>
         </Box>
       ) : (
-        // Render the icon view
-        <Box
-          sx={{
-            display: 'flex',
-            alignItems: 'center',
-            p: 2,
-          }}
-        >
-          {/* Title beside the box */}
-          <Typography variant="h6" sx={{ mr: 2, minWidth: 80 }}>
+        <>
+          <Typography
+            variant="h4"
+            sx={{ flex: 1, fontSize: '1.5rem', textAlign: 'center' }}
+          >
             {title}
           </Typography>
-          {/* Box with diagonal division */}
           <Box
             sx={{
               position: 'relative',
               width: 150,
-              height: 100,
+              height: 80,
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
               borderRadius: 2,
               overflow: 'hidden',
-              background: 'linear-gradient(135deg, green 50%, red 50%)',
+              background: 'linear-gradient(135deg, #9BFAA9 50%, #FC7E7E 50%)',
+              '&::before': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                width: '50%',
+                height: '100%',
+                border: '3px solid #00FF26',
+                borderRight: 'none',
+                borderRadius: '8px 0 0 8px',
+              },
+              '&::after': {
+                content: '""',
+                position: 'absolute',
+                top: 0,
+                right: 0,
+                width: '50%',
+                height: '100%',
+                border: '3px solid #FF0000',
+                borderLeft: 'none',
+                borderRadius: '0 8px 8px 0',
+              },
             }}
           >
-            {/* Left Value */}
             <Typography
               variant="h4"
               color="white"
               sx={{
                 position: 'absolute',
-                top: '25%',
+                top: '50%',
                 left: '25%',
                 transform: 'translate(-50%, -50%)',
+                fontSize: '1.5rem',
               }}
             >
               {leftValue}
             </Typography>
-            {/* Right Value */}
             <Typography
               variant="h4"
               color="white"
               sx={{
                 position: 'absolute',
-                bottom: '25%',
+                top: '50%',
                 right: '25%',
-                transform: 'translate(50%, 50%)',
+                transform: 'translate(50%, -50%)',
+                fontSize: '1.5rem',
               }}
             >
               {rightValue}
             </Typography>
           </Box>
-        </Box>
+        </>
       )}
     </Card>
   );
