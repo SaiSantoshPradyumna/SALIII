@@ -16,7 +16,9 @@ function IconGrid() {
     { id: 7, title: 'vibrations :', leftValue: 40, rightValue: 60 },
     { id: 8, title: 'Foraging Resources :', leftValue: 90, rightValue: 10 },
     { id: 9, title: 'Honey Production :', leftValue: 55, rightValue: 45 },
+    
   ];
+  
 
   const handleIconClick = (id) => {
     // Toggle selection
